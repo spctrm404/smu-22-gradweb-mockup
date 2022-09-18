@@ -1,0 +1,73 @@
+@import 'globalFunctions';
+
+$introMinHeight: 48rem;
+$scrollBtnHeight: 3rem;
+
+.section-intro {
+  background-color: getColorFromPalettes('primary', 90);
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - $scrollBtnHeight);
+    min-height: 50rem;
+    background-color: getColorFromPalettes('primary', 80);
+  }
+}
+.section-scrollUp {
+  background-color: getColorFromPalettes('tertiary', 90);
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: getColorFromPalettes('tertiary', 80);
+    .scrollUp {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: $scrollBtnHeight;
+      background-color: getColorFromPalettes('tertiary', 70);
+      &:hover {
+        background-color: getColorFromPalettes('tertiary', 60);
+      }
+    }
+  }
+}
+.section-main {
+  background-color: getColorFromPalettes('primary', 90);
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: getColorFromPalettes('primary', 80);
+    .menu {
+      position: sticky;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      background-color: getColorFromPalettes('primary', 70);
+      &__logo {
+        background-color: getColorFromPalettes('primary', 60);
+      }
+      &__items {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: getColorFromPalettes('primary', 60);
+        &__each {
+          padding: 0.75rem 1rem;
+        }
+      }
+    }
+  }
+}

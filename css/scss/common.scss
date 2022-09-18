@@ -1,0 +1,96 @@
+@use 'sass:string';
+@import 'customizations';
+@import 'globalFunctions';
+
+@mixin applyBreakpoint($sectionCenterW, $containerPaddingX) {
+  .container {
+    width: $sectionCenterW;
+    > * {
+      padding-inline: $containerPaddingX;
+    }
+  }
+}
+
+@mixin createTextClasses($fontPrefix) {
+  @for $hierarchy from 1 through 3 {
+    $key: #{$fontPrefix} + '-body-' + #{$hierarchy};
+    .font-body-#{$hierarchy},
+    %font-body-#{$hierarchy} {
+      @include getFontPropertiesFromStyle($key);
+    }
+    $key: #{$fontPrefix} + '-body-' + #{$hierarchy} + '-dense';
+    .font-body-#{$hierarchy}-dense,
+    %font-body-#{$hierarchy}-dense {
+      @include getFontPropertiesFromStyle($key);
+    }
+  }
+  @for $hierarchy from 1 through 6 {
+    $key: #{$fontPrefix} + '-heading-' + #{$hierarchy};
+    .font-heading-#{$hierarchy},
+    %font-heading-#{$hierarchy} {
+      @include getFontPropertiesFromStyle($key);
+    }
+  }
+}
+
+body {
+  background-color: getColorByToken('bg-light');
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container {
+  > * {
+    width: 100%;
+  }
+}
+
+@include eq('hnd') {
+  @include applyBreakpoint(100%, 1.5rem);
+}
+
+@include eq('tblSm') {
+  @include applyBreakpoint(100%, 1.5rem);
+}
+
+@include eq('tblLg') {
+  @include applyBreakpoint(52.5rem, 2.25rem);
+}
+
+@include eq('lpt') {
+  @include applyBreakpoint(100%, min(calc(60 / 1440 * 100%), 3.75rem));
+}
+
+@include eq('dsk') {
+  @include applyBreakpoint(90rem, calc(60 / 1440 * 100%));
+}
+
+@include eq('max') {
+  @include applyBreakpoint(90rem, 3.75rem);
+}
+
+@include ge('hnd') {
+  @include createTextClasses('sm');
+  .container {
+    @include getFontPropertiesFromStyle('sm-body-2');
+  }
+}
+
+@include ge('tblLg') {
+  @include createTextClasses('md');
+  .container {
+    @include getFontPropertiesFromStyle('md-body-2');
+  }
+}
+
+@include ge('lpt') {
+  @include createTextClasses('lg');
+  .container {
+    @include getFontPropertiesFromStyle('lg-body-2');
+  }
+}

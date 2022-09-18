@@ -1,0 +1,71 @@
+.section-intro {
+  background-color: #dbdeff;
+}
+.section-intro .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 3rem);
+  min-height: 50rem;
+  background-color: #b8c1ff;
+}
+
+.section-scrollUp {
+  background-color: #ffdf99;
+}
+.section-scrollUp .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e7c16e;
+}
+.section-scrollUp .container .scrollUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  background-color: #caa658;
+}
+.section-scrollUp .container .scrollUp:hover {
+  background-color: #af8c41;
+}
+
+.section-main {
+  background-color: #dbdeff;
+}
+.section-main .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #b8c1ff;
+}
+.section-main .container .menu {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #99a7ff;
+}
+.section-main .container .menu__logo {
+  background-color: #7c8be9;
+}
+.section-main .container .menu__items {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #7c8be9;
+}
+.section-main .container .menu__items__each {
+  padding: 0.75rem 1rem;
+}
