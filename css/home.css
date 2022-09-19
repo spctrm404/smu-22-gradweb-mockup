@@ -7,7 +7,6 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 3rem);
-  min-height: 50rem;
   background-color: #b8c1ff;
 }
 
@@ -68,4 +67,10 @@
 }
 .section-main .container .menu__items__each {
   padding: 0.75rem 1rem;
+}
+
+@media (min-width: 64rem) {
+  .section-intro .container {
+    min-height: 50rem;
+  }
 }
