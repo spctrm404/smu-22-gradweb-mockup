@@ -2,12 +2,10 @@
 @import 'customizations';
 @import 'globalFunctions';
 
-@mixin applyBreakpoint($sectionCenterW, $containerPaddingX) {
+@mixin applyBreakpoint($containerW, $containerPX) {
   .container {
-    width: $sectionCenterW;
-    > * {
-      padding-inline: $containerPaddingX;
-    }
+    width: $containerW;
+    padding-inline: $containerPX;
   }
 }
 
@@ -38,40 +36,29 @@ body {
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  width: 100%;
+  height: auto;
 }
 
 .container {
-  > * {
-    width: 100%;
-  }
+  height: auto;
+  margin-inline: auto;
 }
 
 @include eq('hnd') {
-  @include applyBreakpoint(100%, 1.5rem);
+  @include applyBreakpoint(100%, 0.5rem);
 }
 
 @include eq('tblSm') {
-  @include applyBreakpoint(100%, 1.5rem);
+  @include applyBreakpoint(100%, 0.75rem);
 }
 
 @include eq('tblLg') {
-  @include applyBreakpoint(52.5rem, 2.25rem);
-}
-
-@include eq('lpt') {
-  @include applyBreakpoint(100%, min(calc(60 / 1440 * 100%), 3.75rem));
+  @include applyBreakpoint(100%, 2rem);
 }
 
 @include eq('dsk') {
-  @include applyBreakpoint(90rem, calc(60 / 1440 * 100%));
-}
-
-@include eq('max') {
-  @include applyBreakpoint(90rem, 3.75rem);
+  @include applyBreakpoint(90rem, 2.125rem);
 }
 
 @include ge('hnd') {
@@ -81,14 +68,14 @@ body {
   }
 }
 
-@include ge('tblLg') {
+@include ge('tblSm') {
   @include createTextClasses('md');
   .container {
     @include getFontPropertiesFromStyle('md-body-2');
   }
 }
 
-@include ge('lpt') {
+@include ge('dsk') {
   @include createTextClasses('lg');
   .container {
     @include getFontPropertiesFromStyle('lg-body-2');

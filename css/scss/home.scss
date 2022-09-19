@@ -1,80 +1,98 @@
 @import 'globalFunctions';
 
-$introMinHeight: 48rem;
-$scrollBtnHeight: 3rem;
+$lottieRatio: calc(16 / 9);
+$scrollUpBtnH: 3rem;
 
-.section-intro {
+.section-preMenu {
   background-color: getColorFromPalettes('primary', 90);
   .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - $scrollBtnHeight);
     background-color: getColorFromPalettes('primary', 80);
   }
+  .lottie {
+    height: calc(100vh - $scrollUpBtnH);
+    background-color: getColorFromPalettes('primary', 70);
+  }
+  .scrollUp {
+    height: $scrollUpBtnH;
+    background-color: getColorFromPalettes('primary', 60);
+  }
 }
-.section-scrollUp {
+
+.section-menu {
+  position: relative;
   background-color: getColorFromPalettes('tertiary', 90);
   .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: getColorFromPalettes('tertiary', 80);
-    .scrollUp {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: $scrollBtnHeight;
-      background-color: getColorFromPalettes('tertiary', 70);
-      &:hover {
-        background-color: getColorFromPalettes('tertiary', 60);
-      }
-    }
   }
 }
-.section-main {
-  background-color: getColorFromPalettes('primary', 90);
-  .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: getColorFromPalettes('primary', 80);
-    .menu {
-      position: sticky;
-      top: 0;
+
+.menu {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.5rem;
+  background-color: getColorFromPalettes('tertiary', 70);
+  &__logo {
+    width: 3rem;
+    height: 3rem;
+    background-color: getColorFromPalettes('tertiary', 60);
+  }
+  &-collapsed {
+    width: 3rem;
+    height: 3rem;
+    background-color: getColorFromPalettes('tertiary', 60);
+  }
+  &-expanded {
+    display: none;
+    height: 3rem;
+    .menu__items {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
-      background-color: getColorFromPalettes('primary', 70);
-      &__logo {
-        background-color: getColorFromPalettes('primary', 60);
-      }
-      &__items {
+      justify-content: flex-end;
+      background-color: getColorFromPalettes('tertiary', 60);
+      &__each {
         display: flex;
         flex-direction: row;
-        gap: 1.5rem;
         align-items: center;
-        justify-content: flex-end;
-        background-color: getColorFromPalettes('primary', 60);
-        &__each {
-          padding: 0.75rem 1rem;
-        }
+        align-self: stretch;
+        justify-content: center;
+        background-color: getColorFromPalettes('tertiary', 50);
       }
     }
   }
 }
 
-@include ge('lpt') {
-  .section-intro {
-    .container {
-      min-height: 50rem;
+@include le('hnd') {
+  .menu-expanded {
+    display: none;
+  }
+}
+
+@include ge('tblSm') {
+  .menu-expanded {
+    display: flex;
+    .menu__items {
+      gap: 2rem;
+    }
+  }
+  .menu-collapsed {
+    display: none;
+  }
+}
+
+@include ge('dsk') {
+  .section-preMenu {
+    .lottie {
+      min-height: calc(90rem * 1 / $lottieRatio);
+    }
+  }
+  .menu-expanded {
+    .menu__items {
+      gap: 2.125rem;
     }
   }
 }
